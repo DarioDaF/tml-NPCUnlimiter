@@ -7,13 +7,22 @@ although this mod allows also to decrease it.
 Keep in mind that many parts of Terraria relay on looping over the NPC array so increasing this
 value a lot has the effect of decreasing performance.
 
+IMPORTANT:
+- "Prevent double IL application" is false by default in the config, it's IMPORTANT that this stays
+false to interact with more complex mods using heavy IL (like MultiSpawn); this prevents the mod from
+loading correctly tho if you Mod Reload in game (Suggested usage, setup all mods with reload required
+fields, set the NPC limit in this mod and exit tML, THEN reopen it and never reload mod again)
+
 MODS SUPPORTING AND USING THIS:
 - MultiSpawn >= 0.8
 
 Changelog:
+- 0.6
+-- Description and checks for reload behaviour (see IMPORTANT above)
 - 0.5
 -- Fixed major bugs for world load/save in 1.4.3
 
 Known problems:
+- Reload behaviour and compatibility with other IL mods (see IMPORTANT above)
 - Long load time for the mod (changing the cap is realtime and can be done in game)
 - Not yet mapped to relative the spawn positions of special bosses in vanilla. (@TODO)

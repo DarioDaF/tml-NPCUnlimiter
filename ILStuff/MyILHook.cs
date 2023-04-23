@@ -1,11 +1,7 @@
 ﻿using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NPCUnlimiter.ILStuff
 {
@@ -13,17 +9,21 @@ namespace NPCUnlimiter.ILStuff
     {
         private MethodBase method;
         private Action<ILContext> manipulator;
+        private bool disposed;
 
         public MyILHook(MethodBase method, Action<ILContext> manipulator)
         {
             this.method = method;
             this.manipulator = manipulator;
 
+            this.disposed = false;
             HookEndpointManager.Modify(this.method, this.manipulator);
         }
 
         public void Dispose()
         {
+            if (disposed) return;
+            disposed = true;
             HookEndpointManager.Unmodify(this.method, this.manipulator);
         }
     }

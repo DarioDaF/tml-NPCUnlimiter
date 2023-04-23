@@ -3,10 +3,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using NPCUnlimiter.ILStuff;
 using MonoMod.Cil;
-using MonoMod.RuntimeDetour.HookGen;
 using System.Text.Json.Serialization;
 using System.Linq;
-using MonoMod.RuntimeDetour;
 
 namespace NPCUnlimiter
 {
@@ -31,17 +29,13 @@ namespace NPCUnlimiter
             public int AllX_201;
         }
 
-        const bool CheckPatchResult =
-#if DEBUG
-    false
-#else
-    true
-#endif
-        ;
+        public bool CheckPatchResult = true;
+        public bool PreventDoubleIL = false;
 
         public static int VanillaMaxNPCs = Terraria.Main.maxNPCs; // Used mainly during hooking
         public static int maxNPCs = VanillaMaxNPCs; // @WARN: NEVER SET THIS OUTSIDE THIS CLASS
         public static List<string> patchLog = new();
+        public bool IsDisposing = false;
 
         public Dictionary<string, Dictionary<string, int>> OutInfos = new();
 
@@ -50,6 +44,7 @@ namespace NPCUnlimiter
 
         public void Patch(PatchInfo pi)
         {
+            //IsDisposing = false;
             foreach (var (target, info) in pi)
             {
                 info.Name = target;
@@ -60,13 +55,20 @@ namespace NPCUnlimiter
             }
         }
 
-        void PatchCheck(string methodName, string patchName, int entries, int expectedEntries)
+        void PatchCheck(string methodName, string patchName, int entries, int expectedEntries, bool isSecondPass = false)
         {
             if (entries != expectedEntries)
             {
-                var msg = $"Wrong number of patches for {methodName}: [{patchName}] {entries} != {expectedEntries}";
+                string msg;
+                if (isSecondPass && expectedEntries == 0)
+                {
+                    msg = $"No repatches for {methodName}: [{patchName}]";
+                } else
+                {
+                    msg = $"Wrong number of patches for {methodName}: [{patchName}] {entries} != {expectedEntries}";
+                }
                 patchLog.Add(msg);
-                if (CheckPatchResult)
+                if (CheckPatchResult && !isSecondPass)
                 {
                     throw new PatchException(msg);
                 }
@@ -75,10 +77,20 @@ namespace NPCUnlimiter
 
         private void ILManager(ILContext ctx, PatchResultInfo info)
         {
+            if (IsDisposing)
+                return; // @TODO: Don't rerun if disposing!!!
+            // This is a bug where the rerun of the hook is done while mod is unloading and reloading at the same time???
+
             //var name = ctx.Method.Name;
             var name = info.Name;
 
-            if (!applications.Add(name))
+            if (name == "Terraria.GameContent.Events.ScreenDarkness.Update")
+            {
+                Console.WriteLine("ScreenDarkenss");
+            }
+
+            var isSecondPass = !applications.Add(name);
+            if (isSecondPass && PreventDoubleIL)
                 return;
 
             var p = new Patcher(ctx);
@@ -92,7 +104,7 @@ namespace NPCUnlimiter
                 int newArrEntries = p.Patch_NewArray();
                 int itaaEntries = p.Patch_IndexToAimAt();
                 int entries = varCmpEntries + defValEntries + newArrEntries + itaaEntries;
-                PatchCheck(name, "Safe", entries, info.Safe);
+                PatchCheck(name, "Safe", entries, info.Safe, isSecondPass);
 
                 outInfo["Safe:varCmp"] = varCmpEntries;
                 outInfo["Safe:defVal"] = defValEntries;
@@ -102,21 +114,21 @@ namespace NPCUnlimiter
             if (info.AllX_200 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(200);
-                PatchCheck(name, "AllX_200", entries, info.AllX_200);
+                PatchCheck(name, "AllX_200", entries, info.AllX_200, isSecondPass);
 
                 outInfo["AllX_200"] = entries;
             }
             if (info.AllX_199 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(199);
-                PatchCheck(name, "AllX_199", entries, info.AllX_199);
+                PatchCheck(name, "AllX_199", entries, info.AllX_199, isSecondPass);
 
                 outInfo["AllX_199"] = entries;
             }
             if (info.AllX_201 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(201);
-                PatchCheck(name, "AllX_201", entries, info.AllX_201);
+                PatchCheck(name, "AllX_201", entries, info.AllX_201, isSecondPass);
 
                 outInfo["AllX_201"] = entries;
             }
@@ -126,12 +138,13 @@ namespace NPCUnlimiter
 
         public void UnPatch()
         {
+            //IsDisposing = true; // This is choosen by the caller
             //HookEndpointManager.RemoveAllOwnedBy(typeof(MaxNPCHandler).Assembly); // Doesn't seem to remove all
             foreach (var hook in Enumerable.Reverse(hooks))
             {
                 hook.Dispose();
             }
-            hooks.Clear();
+            hooks.Clear(); // @TODO: is this calling dispose???
         }
 
         public void Dispose()

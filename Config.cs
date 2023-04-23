@@ -1,13 +1,7 @@
-﻿using IL.Terraria.UI;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.Config;
-using Terraria.ModLoader.Config.UI;
 
 namespace NPCUnlimiter
 {
@@ -40,9 +34,26 @@ namespace NPCUnlimiter
             }
         }
 
+        [Header("DEBUG (Require Restart!)")]
+
+        [Label("Check Patches on Release")]
+        [DefaultValue(true)]
+        [Tooltip("Wether or not to check for correct amount of patches on first application in Release build")]
+        public bool CheckPatchesOnRelease { get; set; }
+
+        [Label("Prevent double IL application")]
+        [DefaultValue(false)]
+        [Tooltip("This check allows the mod to reload correctly (more than once), but can cause problems with other mods")]
+        public bool PreventDoubleIL { get; set; }
+
+        [Label("Prevent patches on Unload")]
+        [DefaultValue(true)]
+        [Tooltip("This will prevent conflict from the mod to itself (notably ScreenDarkness borken), but will also mean that on 2nd reload overlapped IL hooks won't work")]
+        public bool PreventPatchOnUnload { get; set; }
+
         [Label("Debug mode")]
         [JsonIgnore]
-        public bool DebugMode => NPCUnlimiter.OutInfosLogFile is not null;
+        public bool DebugMode => NPCUnlimiter.IsDebug;
 
         [Label("Patch log")]
         public string PatchLog => string.Join("\n", MaxNPCHandler.patchLog);

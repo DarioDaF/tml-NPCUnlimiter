@@ -10,12 +10,18 @@ namespace NPCUnlimiter
 
     public class NPCUnlimiter : Mod
 	{
-        public const string OutInfosLogFile =
+        public const bool IsDebug =
 #if DEBUG
-    "C:\\Users\\Dario\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\NPCUnlimiter\\log\\outInfos.json"
+    true
 #else
-    null
+    false
 #endif
+        ;
+
+        public const string OutInfosLogFile =
+            IsDebug
+            ? "C:\\Users\\Dario\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\NPCUnlimiter\\log\\outInfos.json"
+            : null
         ;
 
         public MaxNPCHandler Handler = null;
@@ -39,6 +45,8 @@ namespace NPCUnlimiter
         {
             base.Load();
 
+            var conf = ModContent.GetInstance<Config>();
+
             PatchInfo patchInfo = new();
 
             patchInfo.AddRange(LoadInternalJson<PatchInfo>("patchlist/hardcodedLimits.json"));
@@ -47,6 +55,8 @@ namespace NPCUnlimiter
             patchInfo.AddRange(LoadInternalJson<PatchInfo>("patchlist/constUsage.json"));
 
             Handler = new();
+            Handler.PreventDoubleIL = conf.PreventDoubleIL;
+            Handler.CheckPatchResult = !IsDebug && conf.CheckPatchesOnRelease;
             Handler.Patch(patchInfo);
 
             if (OutInfosLogFile is not null)
@@ -71,8 +81,18 @@ namespace NPCUnlimiter
 
         public override void Unload()
         {
-            Handler?.Dispose(); // If crashes on config Handler could be null
-            Handler = null;
+            if (Handler is not null) // If crashes on config Handler could be null
+            {
+                var conf = ModContent.GetInstance<Config>();
+
+                if (conf.PreventPatchOnUnload)
+                {
+                    Handler.IsDisposing = true;
+                }
+
+                Handler.Dispose();
+                Handler = null;
+            }
 
             base.Unload();
         }
