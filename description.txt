@@ -1,0 +1,15 @@
+This mod patches Vanilla to have a variable maximum NPC limit.
+In tML for Terraria 1.4.3 all the mods cannot be notified correctly of this change
+so they can and probably will have problems unless they are created with this mod in mind.
+In a similar way to avoid compatibility errors it's suggested to only increase the NPC limit,
+although this mod allows also to decrease it.
+
+Keep in mind that many parts of Terraria relay on looping over the NPC array so increasing this
+value a lot has the effect of decreasing performance.
+
+MODS SUPPORTING AND USING THIS:
+- MultiSpawn >= 0.8
+
+Known problems:
+- Long load time for the mod (changing the cap is realtime and can be done in game)
+- Not yet mapped to relative the spawn positions of special bosses in vanilla. (@TODO)

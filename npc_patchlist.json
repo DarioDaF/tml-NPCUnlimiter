@@ -1,0 +1,581 @@
+{
+  "Terraria.GameContent.Bestiary.NPCWasNearPlayerTracker.ScanWorldForFinds": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.BirthdayParty.NaturalAttempt": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.StartVictoryScene": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.ClearAllDD2HostilesInGame": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.FindArenaHitbox": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.DropMedals": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.DropStarterCrystals": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.DD2Event.Difficulty_1_SpawnMonsterFromGate": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.Events.DD2Event.Difficulty_2_SpawnMonsterFromGate": {
+    "Safe": 4
+  },
+  "Terraria.GameContent.Events.DD2Event.Difficulty_3_SpawnMonsterFromGate": {
+    "Safe": 4
+  },
+  "Terraria.GameContent.Events.LanternNight.BossIsActive": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.MysticLogFairiesEvent.TrySpawningFairies": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Events.ScreenDarkness.Update": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.ObjectInteractions.NPCSmartInteractCandidateProvider.ProvideCandidate": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.Shaders.WaterShaderData.DrawWaves": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.BigProgressBarSystem.TryFindingNPCToTrack": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.BigProgressBarSystem.TryTracking": {
+    "AllX_200": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.BrainOfCthuluBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.BigProgressBar.CommonBossBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.DeerclopsBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.EaterOfWorldsProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.BigProgressBar.EaterOfWorldsProgressBar.TryFindingAnotherEOWPiece": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.GolemHeadProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.BigProgressBar.GolemHeadProgressBar.TryFindingAnotherGolemPiece": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.LunarPillarBigProgessBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.MartianSaucerBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.BigProgressBar.MartianSaucerBigProgressBar.TryFindingAnotherMartianSaucerPiece": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.MoonLordProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.BigProgressBar.MoonLordProgressBar.TryFindingAnotherMoonLordPiece": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.PirateShipBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.PirateShipBigProgressBar.TryFindingAnotherPirateShipPiece": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.BigProgressBar.TwinsBigProgressBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 2
+  },
+  "Terraria.GameContent.UI.EmoteBubble.CheckForNPCsToReactToEmoteBubble": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.EmoteBubble.PickNPCEmote": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.UI.EmoteBubble.ProbeTownNPCs": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.CoinLossRevengeSystem+RevengeMarker.SpawnEnemy": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.PortalHelper.cctor": {
+    "AllX_200": 1
+  },
+  "Terraria.GameContent.ShopHelper.GetNearbyResidentNPCs": {
+    "Safe": 1
+  },
+  "Terraria.GameContent.TeleportPylonsSystem.DoesPositionHaveEnoughNPCs": {
+    "Safe": 1
+  },
+  "Terraria.GameInput.LockOnHelper.cctor": {
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.ProjectileLoader.ResizeArrays": {
+    "AllX_200": 1
+  },
+  "Terraria.Utilities.NPCUtils.SearchForTarget(NPC,Vector2,TargetSearchFlag,SearchFilter<Player>,SearchFilter<NPC>)": {
+    "Safe": 1
+  },
+  "Terraria.Collision.EmptyTile": {
+    "Safe": 1
+  },
+  "Terraria.Item.CheckLavaDeath": {
+    "Safe": 1
+  },
+  "Terraria.Item.GetPickedUpByMonsters": {
+    "Safe": 1
+  },
+  "Terraria.Main.cctor": {
+    "AllX_201": 1
+  },
+  "Terraria.Main.Initialize_Entities": {
+    "AllX_201": 1
+  },
+  "Terraria.Main.UpdateAudio_DecideOnTOWMusic": {
+    "Safe": 1
+  },
+  "Terraria.Main.UpdateAudio_DecideOnNewMusic": {
+    "Safe": 1
+  },
+  "Terraria.Main.DoUpdateInWorld": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawNPCs": {
+    "Safe": 1,
+    "AllX_199": 1
+  },
+  "Terraria.Main.DrawNPCDirect_Inner": {
+    "Safe": 1
+  },
+  "Terraria.Main.CacheNPCDraws": {
+    "Safe": 2
+  },
+  "Terraria.Main.CacheProjDraws": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawWoF": {
+    "Safe": 1
+  },
+  "Terraria.Main.HelpText": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawNPCHousesInWorld": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawNPCHousesInUI": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawMouseOver": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawInterface_14_EntityHealthBars": {
+    "Safe": 2,
+    "AllX_199": 1
+  },
+  "Terraria.Main.DrawInterface_Healthbar_Worm": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawInterface_1_2_DrawEntityMarkersInWorld": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawInfoAccs": {
+    "Safe": 3
+  },
+  "Terraria.Main.CheckInvasionProgressDisplay": {
+    "Safe": 1
+  },
+  "Terraria.Main.DrawMap": {
+    "Safe": 3
+  },
+  "Terraria.Main.UpdateTime": {
+    "Safe": 2
+  },
+  "Terraria.Main.UpdateTime_StartNight": {
+    "Safe": 2
+  },
+  "Terraria.Main.UpdateTime_SpawnTownNPCs": {
+    "Safe": 1
+  },
+  "Terraria.MessageBuffer.GetData": {
+    "Safe": 5,
+    "AllX_200": 2
+  },
+  "Terraria.Mount.UpdateEffects": {
+    "Safe": 2
+  },
+  "Terraria.NetMessage.SendSection": {
+    "Safe": 1
+  },
+  "Terraria.NetMessage.SendNPCHousesAndTravelShop": {
+    "Safe": 1
+  },
+  "Terraria.Wiring.HitWireSingle": {
+    "Safe": 2
+  },
+  "Terraria.Wiring.Teleport": {
+    "Safe": 2
+  },
+  "Terraria.WorldGen.UnspawnTravelNPC": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.SpawnTravelNPC": {
+    "Safe": 3
+  },
+  "Terraria.WorldGen.FindAHomelessNPC": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.IsRoomConsideredAlreadyOccupied": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.CheckAchievement_RealEstate": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.IsRoomConsideredOccupiedForNPCIndex": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.ScoreRoom_IsThisRoomOccupiedBySomeone": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.meteor": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.clearWorld": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.UpdateWorld_Inner": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.TriggerLunarApocalypse": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.UpdateLunarApocalypse": {
+    "Safe": 1
+  },
+  "Terraria.WorldGen.GetRidOfCultists": {
+    "Safe": 1
+  },
+  "Terraria.Player.SetTalkNPC": {
+    "AllX_200": 1
+  },
+  "Terraria.Player.UpdateBuffs": {
+    "Safe": 1
+  },
+  "Terraria.Player.SpawnHallucination": {
+    "Safe": 1
+  },
+  "Terraria.Player.UpdateBiomes": {
+    "Safe": 1
+  },
+  "Terraria.Player.CollideWithNPCs": {
+    "Safe": 1
+  },
+  "Terraria.Player.JumpMovement": {
+    "Safe": 2
+  },
+  "Terraria.Player.DashMovement": {
+    "Safe": 2
+  },
+  "Terraria.Player.CollectTaxes": {
+    "Safe": 1
+  },
+  "Terraria.Player.Update": {
+    "Safe": 1
+  },
+  "Terraria.Player.Update_NPCCollision": {
+    "Safe": 1
+  },
+  "Terraria.Player.Hurt": {
+    "Safe": 1
+  },
+  "Terraria.Player.KillMe": {
+    "Safe": 1
+  },
+  "Terraria.Player.SummonItemCheck": {
+    "Safe": 1
+  },
+  "Terraria.Player.VolatileGelatin": {
+    "Safe": 1
+  },
+  "Terraria.Player.ItemCheck_MeleeHitNPCs": {
+    "Safe": 1
+  },
+  "Terraria.Player.ItemCheck_CatchCritters": {
+    "Safe": 1
+  },
+  "Terraria.Player.GetSparkleGuitarTarget": {
+    "Safe": 1
+  },
+  "Terraria.Player.GetZenithTarget": {
+    "Safe": 1
+  },
+  "Terraria.Player.isNearFairy": {
+    "Safe": 1
+  },
+  "Terraria.Player.isNearNPC": {
+    "Safe": 1
+  },
+  "Terraria.Player.MinionNPCTargetAim": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.ctor": {
+    "AllX_200": 1
+  },
+  "Terraria.Projectile.InitializeStaticThings": {
+    "AllX_200": 1
+  },
+  "Terraria.Projectile.ResetImmunity": {
+    "AllX_200": 1
+  },
+  "Terraria.Projectile.ghostHurt": {
+    "Safe": 2
+  },
+  "Terraria.Projectile.Damage": {
+    "Safe": 4
+  },
+  "Terraria.Projectile.SummonMonkGhast": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.Update": {
+    "AllX_200": 1
+  },
+  "Terraria.Projectile.HandleMovement": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.VanillaAI": {
+    "Safe": 28
+  },
+  "Terraria.Projectile.AI_185_LifeDrain": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_121_StardustDragon": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.ResetLocalNPCHitImmunity": {
+    "AllX_200": 1
+  },
+  "Terraria.Projectile.AI_015_Flails": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_015_Flails_Old": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_100_Medusa": {
+    "Safe": 2
+  },
+  "Terraria.Projectile.AI_120_StardustGuardian_FindTarget": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.FindTargetWithinRange": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.FindTargetWithLineOfSight": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_016": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.Minion_FindTargetInRange": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_067_TigerSpecialAttack": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_156_TryAttackingNPCs": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_147_Celeb2Rocket": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_001": {
+    "Safe": 5
+  },
+  "Terraria.Projectile.AI_026": {
+    "Safe": 3
+  },
+  "Terraria.Projectile.AI_062": {
+    "Safe": 2
+  },
+  "Terraria.Projectile.AI_099_1": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_099_2": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_130_FlameBurstTower_FindTarget": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_134_Ballista_FindTarget": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_137_LightningAura": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.AI_138_ExplosiveTrap": {
+    "Safe": 1
+  },
+  "Terraria.Projectile.Kill": {
+    "Safe": 2
+  },
+  "Terraria.NPC.cctor": {
+    "AllX_200": 1
+  },
+  "Terraria.NPC.GetFullnameByID": {
+    "Safe": 1
+  },
+  "Terraria.NPC.UpdateFoundActiveNPCs": {
+    "Safe": 1
+  },
+  "Terraria.NPC.setNPCName": {
+    "Safe": 1
+  },
+  "Terraria.NPC.GetFirstNPCNameOrNull": {
+    "Safe": 1
+  },
+  "Terraria.NPC.MechSpawn": {
+    "Safe": 1
+  },
+  "Terraria.NPC.GetNPCLocation": {
+    "Safe": 1
+  },
+  "Terraria.NPC.VanillaAI_Inner": {
+    "Safe": 33
+  },
+  "Terraria.NPC.AI_124_DeerclopsLeg": {
+    "AllX_200": 1
+  },
+  "Terraria.NPC.AI_122_PirateGhost": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_065_Butterflies": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_121_QueenSlime": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_114_Dragonflies": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_113_WindyBalloon_GetSlaveNPC": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_112_FairyCritter": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_037_Destroyer": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_006_Worms": {
+    "Safe": 3
+  },
+  "Terraria.NPC.AI_007_TryForcingSitting": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_007_TownEntities": {
+    "Safe": 7
+  },
+  "Terraria.NPC.AI_007_TownEntities_GetWalkPrediction": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_003_Fighters": {
+    "Safe": 5
+  },
+  "Terraria.NPC.AI_110_Betsy": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_026_Unicorns": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_107_ImprovedWalkers": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_084_LunaticCultist": {
+    "Safe": 9
+  },
+  "Terraria.NPC.AI_108_DivingFlyer": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_109_DarkMage": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AI_111_DD2LightningBug": {
+    "Safe": 1
+  },
+  "Terraria.NPC.TargetClosestUpgraded": {
+    "Safe": 1
+  },
+  "Terraria.NPC.CheckActive_WormSegments": {
+    "Safe": 1
+  },
+  "Terraria.NPC.checkDead": {
+    "Safe": 1
+  },
+  "Terraria.NPC.DropEoWLoot": {
+    "Safe": 1
+  },
+  "Terraria.NPC.PlayerInteraction": {
+    "Safe": 7
+  },
+  "Terraria.NPC.CanReleaseNPCs": {
+    "Safe": 1
+  },
+  "Terraria.NPC.SpawnNPC": {
+    "Safe": 4
+  },
+  "Terraria.NPC.AnyDanger": {
+    "Safe": 1
+  },
+  "Terraria.NPC.SpawnSkeletron": {
+    "Safe": 2
+  },
+  "Terraria.NPC.SpawnBoss": {
+    "Safe": 2,
+    "AllX_200": 1
+  },
+  "Terraria.NPC.NewNPC": {
+    "Safe": 1,
+    "AllX_200": 1,
+    "AllX_199": 1
+  },
+  "Terraria.NPC.StrikeNPC": {
+    "Safe": 1
+  },
+  "Terraria.NPC.VanillaHitEffect_Inner": {
+    "Safe": 6
+  },
+  "Terraria.NPC.CountNPCS": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AnyHelpfulFairies": {
+    "Safe": 1
+  },
+  "Terraria.NPC.AnyNPCs": {
+    "Safe": 1
+  },
+  "Terraria.NPC.FindFirstNPC": {
+    "Safe": 1
+  },
+  "Terraria.NPC.NearSpikeBall": {
+    "Safe": 1
+  },
+  "Terraria.NPC.ResetNetOffsets": {
+    "Safe": 1
+  },
+  "Terraria.NPC.GetHurtByOtherNPCs": {
+    "Safe": 1
+  },
+  "Terraria.NPC.GetTileCollisionParameters": {
+    "Safe": 2
+  },
+  "Terraria.NPC.GetChat": {
+    "Safe": 1
+  }
+}

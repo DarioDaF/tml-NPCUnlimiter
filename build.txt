@@ -1,0 +1,5 @@
+displayName = NPC Unlimiter
+author = DarioDaF
+version = 0.2
+homepage = https://github.com/DarioDaF/tml-NPCUnlimiter
+buildIgnore = log/*
