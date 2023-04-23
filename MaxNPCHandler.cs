@@ -6,6 +6,7 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using System.Text.Json.Serialization;
 using System.Linq;
+using MonoMod.RuntimeDetour;
 
 namespace NPCUnlimiter
 {
@@ -34,7 +35,7 @@ namespace NPCUnlimiter
 #if DEBUG
     false
 #else
-    false // Seems like on reload some things don't get cleared correctly?
+    true
 #endif
         ;
 
@@ -44,7 +45,7 @@ namespace NPCUnlimiter
 
         public Dictionary<string, Dictionary<string, int>> OutInfos = new();
 
-        private List<(MethodBase, Action<ILContext>)> hooks = new();
+        private List<MyILHook> hooks = new();
         private HashSet<string> applications = new(); // Workaround to avoid double application problems in Modify // @TODO: Find why and fix
 
         public void Patch(PatchInfo pi)
@@ -55,8 +56,7 @@ namespace NPCUnlimiter
                 var m = MethodSearcher.GetFromString(target);
                 var ilManager = (ILContext ctx) => ILManager(ctx, info);
 
-                HookEndpointManager.Modify(m, ilManager);
-                hooks.Add((m, ilManager));
+                hooks.Add(new MyILHook(m, ilManager));
             }
         }
 
@@ -127,9 +127,9 @@ namespace NPCUnlimiter
         public void UnPatch()
         {
             //HookEndpointManager.RemoveAllOwnedBy(typeof(MaxNPCHandler).Assembly); // Doesn't seem to remove all
-            foreach (var (m, ilManager) in hooks)
+            foreach (var hook in Enumerable.Reverse(hooks))
             {
-                HookEndpointManager.Unmodify(m, ilManager);
+                hook.Dispose();
             }
             hooks.Clear();
         }
