@@ -5,6 +5,7 @@ using NPCUnlimiter.ILStuff;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using System.Text.Json.Serialization;
+using System.Linq;
 
 namespace NPCUnlimiter
 {
@@ -33,14 +34,18 @@ namespace NPCUnlimiter
 #if DEBUG
     false
 #else
-    true
+    false // Seems like on reload some things don't get cleared correctly?
 #endif
         ;
 
         public static int VanillaMaxNPCs = Terraria.Main.maxNPCs; // Used mainly during hooking
         public static int maxNPCs = VanillaMaxNPCs; // @WARN: NEVER SET THIS OUTSIDE THIS CLASS
+        public static List<string> patchLog = new();
 
         public Dictionary<string, Dictionary<string, int>> OutInfos = new();
+
+        private List<(MethodBase, Action<ILContext>)> hooks = new();
+        private HashSet<string> applications = new(); // Workaround to avoid double application problems in Modify // @TODO: Find why and fix
 
         public void Patch(PatchInfo pi)
         {
@@ -51,6 +56,20 @@ namespace NPCUnlimiter
                 var ilManager = (ILContext ctx) => ILManager(ctx, info);
 
                 HookEndpointManager.Modify(m, ilManager);
+                hooks.Add((m, ilManager));
+            }
+        }
+
+        void PatchCheck(string methodName, string patchName, int entries, int expectedEntries)
+        {
+            if (entries != expectedEntries)
+            {
+                var msg = $"Wrong number of patches for {methodName}: [{patchName}] {entries} != {expectedEntries}";
+                patchLog.Add(msg);
+                if (CheckPatchResult)
+                {
+                    throw new PatchException(msg);
+                }
             }
         }
 
@@ -58,6 +77,9 @@ namespace NPCUnlimiter
         {
             //var name = ctx.Method.Name;
             var name = info.Name;
+
+            if (!applications.Add(name))
+                return;
 
             var p = new Patcher(ctx);
 
@@ -70,8 +92,7 @@ namespace NPCUnlimiter
                 int newArrEntries = p.Patch_NewArray();
                 int itaaEntries = p.Patch_IndexToAimAt();
                 int entries = varCmpEntries + defValEntries + newArrEntries + itaaEntries;
-                if (entries != info.Safe && CheckPatchResult)
-                    throw new PatchException($"Wrong number of patches for {name}: [Safe] {entries} != {info.Safe}");
+                PatchCheck(name, "Safe", entries, info.Safe);
 
                 outInfo["Safe:varCmp"] = varCmpEntries;
                 outInfo["Safe:defVal"] = defValEntries;
@@ -81,24 +102,21 @@ namespace NPCUnlimiter
             if (info.AllX_200 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(200);
-                if (entries != info.AllX_200 && CheckPatchResult)
-                    throw new PatchException($"Wrong number of patches for {name}: [AllX_200] {entries} != {info.AllX_200}");
+                PatchCheck(name, "AllX_200", entries, info.AllX_200);
 
                 outInfo["AllX_200"] = entries;
             }
             if (info.AllX_199 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(199);
-                if (entries != info.AllX_199 && CheckPatchResult)
-                    throw new PatchException($"Wrong number of patches for {name}: [AllX_199] {entries} != {info.AllX_199}");
+                PatchCheck(name, "AllX_199", entries, info.AllX_199);
 
                 outInfo["AllX_199"] = entries;
             }
             if (info.AllX_201 > 0)
             {
                 int entries = p.Patch_Unsafe_AllX(201);
-                if (entries != info.AllX_201 && CheckPatchResult)
-                    throw new PatchException($"Wrong number of patches for {name}: [AllX_201] {entries} != {info.AllX_201}");
+                PatchCheck(name, "AllX_201", entries, info.AllX_201);
 
                 outInfo["AllX_201"] = entries;
             }
@@ -108,11 +126,17 @@ namespace NPCUnlimiter
 
         public void UnPatch()
         {
-            HookEndpointManager.RemoveAllOwnedBy(typeof(MaxNPCHandler).Assembly);
+            //HookEndpointManager.RemoveAllOwnedBy(typeof(MaxNPCHandler).Assembly); // Doesn't seem to remove all
+            foreach (var (m, ilManager) in hooks)
+            {
+                HookEndpointManager.Unmodify(m, ilManager);
+            }
+            hooks.Clear();
         }
 
         public void Dispose()
         {
+            this.Resize(VanillaMaxNPCs);
             this.UnPatch();
         }
 

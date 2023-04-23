@@ -1,7 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using IL.Terraria.UI;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader.Config;
+using Terraria.ModLoader.Config.UI;
 
 namespace NPCUnlimiter
 {
@@ -36,7 +42,10 @@ namespace NPCUnlimiter
 
         [Label("Debug mode")]
         [JsonIgnore]
-        public bool DebugMode => NPCUnlimiter.OutInfosLogFile is not null; 
+        public bool DebugMode => NPCUnlimiter.OutInfosLogFile is not null;
+
+        [Label("Patch log")]
+        public string PatchLog => string.Join("\n", MaxNPCHandler.patchLog);
 
         public override void OnChanged()
         {
