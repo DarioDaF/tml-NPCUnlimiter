@@ -1,3 +1,4 @@
+using MonoMod.Utils;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -19,14 +20,11 @@ namespace NPCUnlimiter
 
         public MaxNPCHandler Handler = null;
 
-        public override void Load()
+        public T LoadInternalJson<T>(string path)
         {
-            base.Load();
-
-            PatchInfo patchInfo = null;
-            using (var stream = this.GetFileStream("npc_patchlist.json"))
+            using (var stream = this.GetFileStream(path))
             {
-                patchInfo = JsonSerializer.Deserialize<PatchInfo>(
+                return JsonSerializer.Deserialize<T>(
                     stream,
                     new JsonSerializerOptions()
                     {
@@ -35,13 +33,25 @@ namespace NPCUnlimiter
                     }
                 );
             }
+        }
+
+        public override void Load()
+        {
+            base.Load();
+
+            PatchInfo patchInfo = new();
+
+            patchInfo.AddRange(LoadInternalJson<PatchInfo>("patchlist/hardcodedLimits.json"));
+
+            // Only for 1.4.3
+            patchInfo.AddRange(LoadInternalJson<PatchInfo>("patchlist/constUsage.json"));
 
             Handler = new();
             Handler.Patch(patchInfo);
 
             if (OutInfosLogFile is not null)
             {
-                using (var stream = File.OpenWrite(OutInfosLogFile))
+                using (var stream = File.Create(OutInfosLogFile))
                 {
                     JsonSerializer.Serialize(
                         stream,

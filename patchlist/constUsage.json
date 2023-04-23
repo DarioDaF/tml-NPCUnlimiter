@@ -1,0 +1,33 @@
+{
+  "Terraria.ModLoader.BossBarLoader.PreDraw": {
+    /* Safe:itaa doesn't catch this because it gets stored in a local */
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.BossBarLoader.PostDraw": {
+    /* Safe:itaa doesn't catch this because it gets stored in a local */
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.ModBossBar.ValidateAndCollectNecessaryInfo": {
+    "Safe": 1
+  },
+  /*
+  "Terraria.ModLoader.Default.Patreon.OrianSetEffectPlayer.PostUpdate": {
+    "Safe": 1,
+    "AllX_200": 1
+  },
+  */
+  "Terraria.ModLoader.Default.Patreon.OrianSetEffectPlayer.PostUpdate": {
+    "Safe": 1
+  },
+  "Terraria.ModLoader.Default.Patreon.OrianSetEffectPlayer+<>c__DisplayClass2_0.<PostUpdate>b__0": {
+    /* Lambda functions for Linq are pain... */
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.IO.WorldIO.SaveNPCs": {
+    "Safe": 1
+  },
+  "Terraria.ModLoader.IO.WorldIO.LoadNPCs": {
+    "Safe": 2,
+    "AllX_200": 3
+  }
+}

@@ -1108,5 +1108,39 @@
     "Safe:defVal": 0,
     "Safe:newArr": 0,
     "Safe:itaa": 0
+  },
+  "Terraria.ModLoader.BossBarLoader.PreDraw": {
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.BossBarLoader.PostDraw": {
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.ModBossBar.ValidateAndCollectNecessaryInfo": {
+    "Safe:varCmp": 0,
+    "Safe:defVal": 0,
+    "Safe:newArr": 0,
+    "Safe:itaa": 1
+  },
+  "Terraria.ModLoader.Default.Patreon.OrianSetEffectPlayer.PostUpdate": {
+    "Safe:varCmp": 1,
+    "Safe:defVal": 0,
+    "Safe:newArr": 0,
+    "Safe:itaa": 0
+  },
+  "Terraria.ModLoader.Default.Patreon.OrianSetEffectPlayer\u002B\u003C\u003Ec__DisplayClass2_0.\u003CPostUpdate\u003Eb__0": {
+    "AllX_200": 1
+  },
+  "Terraria.ModLoader.IO.WorldIO.SaveNPCs": {
+    "Safe:varCmp": 1,
+    "Safe:defVal": 0,
+    "Safe:newArr": 0,
+    "Safe:itaa": 0
+  },
+  "Terraria.ModLoader.IO.WorldIO.LoadNPCs": {
+    "Safe:varCmp": 2,
+    "Safe:defVal": 0,
+    "Safe:newArr": 0,
+    "Safe:itaa": 0,
+    "AllX_200": 3
   }
 }

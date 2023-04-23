@@ -1,10 +1,13 @@
-import json
+import json5 as json
 
 with open('./log/outInfos.json', 'r') as fp:
     res = json.load(fp)
 
-with open('./npc_patchlist.json', 'r') as fp:
-    src = json.load(fp)
+src = {}
+with open('./patchlist/hardcodedLimits.json', 'r') as fp:
+    src.update(json.load(fp))
+with open('./patchlist/constUsage.json', 'r') as fp:
+    src.update(json.load(fp))
 
 for name in src.keys():
     s = src[name]

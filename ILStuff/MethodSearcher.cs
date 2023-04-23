@@ -37,8 +37,6 @@ namespace NPCUnlimiter.ILStuff
 
             return ArgsTypeMapping;
         }
-        
-
 
         public static MethodBase GetFromString(string repr)
         {
