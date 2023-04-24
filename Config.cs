@@ -47,7 +47,7 @@ namespace NPCUnlimiter
         public bool PreventDoubleIL { get; set; }
 
         [Label("Prevent patches on Unload")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Tooltip("This will prevent conflict from the mod to itself (notably ScreenDarkness borken), but will also mean that on 2nd reload overlapped IL hooks won't work")]
         public bool PreventPatchOnUnload { get; set; }
 

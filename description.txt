@@ -7,7 +7,7 @@ although this mod allows also to decrease it.
 Keep in mind that many parts of Terraria relay on looping over the NPC array so increasing this
 value a lot has the effect of decreasing performance.
 
-IMPORTANT:
+IMPORTANT (partially fixed):
 - "Prevent double IL application" is false by default in the config, it's IMPORTANT that this stays
 false to interact with more complex mods using heavy IL (like MultiSpawn); this prevents the mod from
 loading correctly tho if you Mod Reload in game (Suggested usage, setup all mods with reload required
